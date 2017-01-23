@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Elasticsearch Search Server</title>
+    <link rel="stylesheet" href="vendor/css/app.css">
+    <!--link rel="stylesheet" href="vendor/css/normalize.css"-->
+    <script src="bower_components/angular/angular.min.js"></script>
+    <script src="bower_components/angular-sanitize/angular-sanitize.min.js"></script>
+    <script src="bower_components/elasticsearch/elasticsearch.angular.min.js"></script>
+
+    <script src="index.js"></script>
+</head>
+<body ng-app="searchApp" ng-controller="SearchResultsList">
+<div class="search-form">
+    <form ng-submit="search()">
+        <input ng-model="searchTerms" type="text" placeholder="Search for books" class="search-input">
+        <input type="submit" value="Search" class="search-submit">
+    </form>
+
+    <section class="results">
+        <h1 class="search-title" ng-if="results.documentCount > 0">
+            Results for <strong>{{results.searchTerms}} ({{results.documentCount}})</strong>
+        </h1>
+        <p ng-if="noResults" class="no-results">No results were founs for your search.</p>
+        <ul>
+            <li ng-repeat="book in results.documents">
+                <strong>{{book.title}}</strong>
+                <p>{{book['detailed description']}}</p>
+            </li>
+        </ul>
+        <button class="load-next" ng-click="getNextPage()" ng-if="canGetNextPage">Load More Results</button>
+        <div class="throbber" ng-if="isSearching"></div>
+    </section>
+</div>
+</body>
+</html>

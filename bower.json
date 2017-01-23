@@ -1,0 +1,22 @@
+{
+  "name": "building-elasticsearch-search-server",
+  "authors": [
+    "jemliF <jemlifathi2013@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "elasticsearch": "^12.1.3",
+    "angular-sanitize": "^1.6.1",
+    "angular": "angularjs#^1.6.1"
+  }
+}
